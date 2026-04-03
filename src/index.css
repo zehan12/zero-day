@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-green: #2cc923; /* A bright green that resembles the picture */
+  --highlight-green: #37ff29; /* Brighter neon green for text */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+}
+
+/* Background video container */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  filter: brightness(0.6) sepia(0.5) hue-rotate(80deg) saturate(1.5); /* giving a green tint */
+}
+
+/* Overlay to darken and add scanline effect */
+.crt-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 10, 0, 0.3); /* dark green overlay tint */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Main Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 1;
+}
+
+/* Top Navigation Area */
+.top-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mute-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--highlight-green);
+  transition: all 0.2s ease;
+}
+.mute-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.logo {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(44, 201, 35, 0.5);
+  display: flex;
+  align-items: center;
+}
+.logo-tap {
+  color: var(--highlight-green);
+}
+.logo-fun {
+  color: white;
+}
+
+/* Center Content */
+.content-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  padding: 0 20px;
+  transform: translateY(-5vh);
+}
+
+.icon-container {
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  box-shadow: 0 0 20px rgba(0,255,0,0.1);
+}
+
+.icon-container svg {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+  letter-spacing: 1px;
+}
+.title-coming {
+  color: white;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+.title-soon {
+  color: var(--highlight-green);
+  text-shadow: 0 0 15px rgba(55, 255, 41, 0.6);
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  font-weight: 400;
+  max-width: 380px;
+}
+
+/* Button */
+.connect-btn {
+  width: 100%;
+  background-color: var(--primary-green);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(44, 201, 35, 0.3);
+}
+
+.connect-btn:hover {
+  background-color: var(--highlight-green);
+  box-shadow: 0 6px 20px rgba(44, 201, 35, 0.5);
+  transform: translateY(-2px);
+}
+
+.connect-btn:active {
+  transform: translateY(0);
+}
+
+/* Footer Links */
+.footer-links {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.social-icon {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  color: white;
+}
+
+.help-text {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+}
