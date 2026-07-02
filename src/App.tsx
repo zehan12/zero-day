@@ -18,7 +18,7 @@ function App() {
         muted={isMuted}
         playsInline
       >
-        <source src="https://res.cloudinary.com/dvlcwhrl1/video/upload/v1772055706/access_ukkkef.mp4" type="video/mp4" />
+        <source src="https://github.com/user-attachments/assets/2d22003d-5db2-48b7-a461-d915e294062f" type="video/mp4" />
       </video>
       <div className="crt-overlay"></div>
 
